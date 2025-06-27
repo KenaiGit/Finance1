@@ -1,0 +1,5 @@
+fixed_assets_capitalization.txt
+invoice_matching_policy.txt
+payment_process.txt
+reversing_journal.txt
+vat_policy.txt
