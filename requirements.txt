@@ -1,0 +1,13 @@
+streamlit
+pandas
+requests
+python-dotenv
+mysql-connector-python
+msal
+langchain
+langchain-community
+faiss-cpu
+sentence-transformers
+huggingface-hub
+
+
