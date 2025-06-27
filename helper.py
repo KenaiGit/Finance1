@@ -9,16 +9,17 @@ from langchain_community.embeddings import HuggingFaceEmbeddings
 from langchain.text_splitter import RecursiveCharacterTextSplitter
 from langchain.schema.document import Document
 from sentence_transformers import SentenceTransformer
+import streamlit as st
 
 # Load environment variables
 
 
 # 🔐 SharePoint Configuration
-CLIENT_ID = os.getenv("CLIENT_ID")
-TENANT_ID = os.getenv("TENANT_ID")
-SHAREPOINT_HOST = os.getenv("SHAREPOINT_HOST")
-SITE_NAME = os.getenv("SITE_NAME")
-DOC_LIB_PATH = os.getenv("DOC_LIB_PATH")
+CLIENT_ID = st.secrets["CLIENT_ID"]
+TENANT_ID = st.secrets["TENANT_ID"]
+SHAREPOINT_HOST = st.secrets["SHAREPOINT_HOST"]
+SITE_NAME = st.secrets["SITE_NAME"]
+DOC_LIB_PATH = st.secrets["DOC_LIB_PATH"]
 EMBEDDINGS_MODEL = "sentence-transformers/all-mpnet-base-v2"
 embeddings = HuggingFaceEmbeddings(model_name=EMBEDDINGS_MODEL)
 
@@ -27,7 +28,7 @@ def authenticate_microsoft():
     token_url = f"https://login.microsoftonline.com/{TENANT_ID}/oauth2/v2.0/token"
     payload = {
         "client_id": CLIENT_ID,
-        "client_secret": os.getenv("CLIENT_SECRET"),
+        "client_secret": st.secrets["CLIENT_SECRET"],
         "grant_type": "client_credentials",
         "scope": "https://graph.microsoft.com/.default"
     }
@@ -84,7 +85,7 @@ def get_context_from_docs(user_query):
 
 # 💬 Mistral LLM
 def call_llm(prompt):
-    mistral_api_key = os.getenv("MISTRAL_API_KEY")
+    mistral_api_key = st.secrets["MISTRAL_API_KEY"]
     headers = {
         "Authorization": f"Bearer {mistral_api_key}",
         "Content-Type": "application/json"
@@ -104,11 +105,11 @@ def call_llm(prompt):
 def run_sql_query(query):
     try:
         conn = mysql.connector.connect(
-            host=os.getenv("DB_HOST"),
-            database=os.getenv("DB_NAME"),
-            user=os.getenv("DB_USER"),
-            password=os.getenv("DB_PASSWORD"),
-            port=int(os.getenv("DB_PORT", 3306))
+            host=st.secrets["DB_HOST"],
+            database=st.secrets["DB_NAME"],
+            user=st.secrets["DB_USER"],
+            password=st.secrets["DB_PASSWORD"],
+            port=int(st.secrets.get("DB_PORT", 3306))
         )
         cursor = conn.cursor()
         cursor.execute(query)
