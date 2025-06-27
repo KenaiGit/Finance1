@@ -11,7 +11,7 @@ from langchain.schema.document import Document
 from sentence_transformers import SentenceTransformer
 
 # Load environment variables
-load_dotenv()
+
 
 # 🔐 SharePoint Configuration
 CLIENT_ID = os.getenv("CLIENT_ID")
