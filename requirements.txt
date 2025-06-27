@@ -1,13 +1,14 @@
-streamlit
-pandas
+streamlit==1.35.0
+pandas==2.2.2
 requests
 python-dotenv
 mysql-connector-python
 msal
-langchain
+langchain==0.2.1
 langchain-community
-faiss-cpu
+faiss-cpu==1.7.4
 sentence-transformers
 huggingface-hub
+
 
 
