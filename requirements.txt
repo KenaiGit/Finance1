@@ -4,11 +4,8 @@ requests
 python-dotenv
 mysql-connector-python
 msal
-langchain==0.2.1
+langchain
 langchain-community
 faiss-cpu==1.7.4
 sentence-transformers
 huggingface-hub
-
-
-
