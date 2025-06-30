@@ -79,6 +79,7 @@ for role, content in st.session_state.chat_history:
             st.info("No data found.")
     else:
         if role == "You":
-            st.markdown(f"**You:** {content}")
+            st.markdown(f"<div style='font-weight:bold; font-size:18px;'>🧍‍♂️ You: {content}</div>", unsafe_allow_html=True)
         else:
-            st.markdown(content)
+            st.markdown(f"<div style='margin-top: 0.5rem; font-size:16px;'>🤖 {content}</div>", unsafe_allow_html=True)
+

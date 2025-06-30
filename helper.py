@@ -226,4 +226,6 @@ Answer:"""
         return call_llm(doc_prompt)
 
     else:
-        return f"Unhandled LLM response: {decision}"
+        
+        return "👋 Hi there! I’m your finance assistant. You can ask me things like:\n- Show unpaid invoices\n- What is the process to reverse a journal entry?\n- List vendor payments for June\n\nTry a finance-related question to get started!"
+
