@@ -57,12 +57,7 @@ with st.form("chat_form", clear_on_submit=True):
 if submitted and query:
     with st.spinner("Thinking..."):
         try:
-            casual_phrases = ["hi", "hello", "hey", "good morning", "good evening", "how are you", "what's up"]
-            if query.lower().strip() in casual_phrases:
-                result = "👋 Hi there! I'm your finance assistant. You can ask me about invoices, payments, ledgers, or finance policies."
-            else:
-                result = route_query(query)
-
+            result = route_query(query)
             st.session_state.chat_history.insert(0, ("Bot", result))
             st.session_state.chat_history.insert(0, ("You", query))
         except Exception as e:
@@ -83,3 +78,4 @@ for role, content in st.session_state.chat_history:
         else:
             st.markdown(f"<div style='margin-top: 0.5rem; font-size:16px;'>🤖 {content}</div>", unsafe_allow_html=True)
 
+        
