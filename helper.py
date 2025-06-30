@@ -193,8 +193,10 @@ Instructions:
 -If the user asks for all invoices or a summary of invoices, return a SQL query that combines both `ap_invoices` and `ar_invoices` using a `UNION ALL`. Make sure the column names match exactly, and add a column called `invoice_type` with values 'AP' or 'AR'. 
 
  For consistency:
-- Rename `vendor_id` and `customer_id` as `entity_id`
-- Rename `payment_status` and `payment_received` as `payment_status` (use 'Paid'/'Unpaid')
+- In the final *output* (not the SQL), treat `vendor_id` and `customer_id` as a common `entity_id`.
+- In the final *output*, treat `payment_status` and `payment_received` both as `payment_status` with values 'Paid'/'Unpaid'.
+- But do not rename these fields in the actual SQL query — use the original column names.
+
 
 
 Query: {user_query}
