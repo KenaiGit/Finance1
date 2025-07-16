@@ -15,7 +15,7 @@ import streamlit as st
 
 
 # 🔐 SharePoint Configuration
-CLIENT_ID = st.secrets["CLIENT_ID"]
+CLIENT_ID="354e1512-776d-47b9-9278-3dc4c5e62e66"
 TENANT_ID = st.secrets["TENANT_ID"]
 SHAREPOINT_HOST = st.secrets["SHAREPOINT_HOST"]
 SITE_NAME = st.secrets["SITE_NAME"]
